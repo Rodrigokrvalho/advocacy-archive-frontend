@@ -1,9 +1,44 @@
-
+import { Table } from "@/components/Table";
+import { MainFilters } from "@/components/filters/MainFilters";
+import { Head } from "@/layout/Head";
+import { Container, Heading } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Bem vindo</h1>
-    </main>
+    <>
+      <Head />
+
+      <main>
+        <Container maxW="container.xl" mt={20}>
+
+          <MainFilters />
+
+          <Table
+            data={[
+              { id: 1, name: "teste1", email: "test1@test.com" },
+              { id: 2, name: "teste2", email: "test2@test.com" },
+              { id: 3, name: "teste3", email: "test3@test.com" },
+              { id: 4, name: "teste4", email: "test4@test.com" },
+              { id: 5, name: "teste5", email: "test5@test.com" },
+              { id: 6, name: "teste6", email: "test6@test.com" },
+              { id: 7, name: "teste7", email: "test7@test.com" }
+            ]}
+            headers={[
+              {
+                key: "id", value: "ID"
+              },
+              {
+                key: "name", value: "Nome"
+              },
+              {
+                key: "email", value: "Email"
+              }
+            ]}
+          >
+
+          </Table>
+        </Container>
+      </main>
+    </>
   );
 }
