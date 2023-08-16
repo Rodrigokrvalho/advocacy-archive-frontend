@@ -9,10 +9,11 @@ interface Headers {
 interface Props {
   headers: Headers[];
   data: Record<string, number | string>[];
+  onClickRow?: (id: number | string) => void;
   children?: ReactNode;
 }
 
-export function Table({ data, headers, children }: Props) {
+export function Table({ data, headers, children, onClickRow = () => {} }: Props) {
 
   return (
     <TableContainer>
@@ -28,7 +29,7 @@ export function Table({ data, headers, children }: Props) {
         <Tbody>
           {data.map((data) => (
             <Tr
-              key={data.id}
+              onClick={() => onClickRow(data.id)}
               _hover={{
                 bg: 'primary.100',
               }}

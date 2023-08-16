@@ -8,7 +8,7 @@ interface Props {
 
 }
 
-export function Head({}: Props) {
+export function Header({}: Props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<HTMLInputElement>(null);
 

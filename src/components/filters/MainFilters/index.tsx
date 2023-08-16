@@ -2,6 +2,7 @@ import { Box, Button, Center, Flex, FormLabel, Input } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
+import { BaseInput } from "@/components/BaseInput";
 
 const filterDataFormSchema = z.object({
   name: z.string().optional(),
@@ -34,27 +35,18 @@ export function MainFilters() {
         gap={4}
         flexDirection={['column', 'column', 'row']}
       >
-        <Box w="full">
-          <FormLabel htmlFor="name">Nome</FormLabel>
-          <Input
-            type="text"
-            {...register('name')}
-          />
-        </Box>
-        <Box w="full">
-          <FormLabel htmlFor="action">Ação</FormLabel>
-          <Input
-            type="text"
-            {...register('action')}
-          />
-        </Box>
-        <Box w="full">
-          <FormLabel htmlFor="status">Andamento</FormLabel>
-          <Input
-            type="text"
-            {...register('status')}
-          />
-        </Box>
+        <BaseInput
+          label="Cliente"
+          {...register('name')}
+        />
+        <BaseInput
+          label="Ação"
+          {...register('action')}
+        />
+        <BaseInput
+          label="Andamento"
+          {...register('status')}
+        />
       </Flex>
 
       <Center>

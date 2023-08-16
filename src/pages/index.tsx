@@ -1,12 +1,19 @@
 import { Table } from "@/components/Table";
 import { MainFilters } from "@/components/filters/MainFilters";
-import { Head } from "@/layout/Head";
-import { Container, Heading } from "@chakra-ui/react";
+import { Header } from "@/layout/Header";
+import { Container } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const { push } = useRouter();
+
+  function handleNavigateToProcess(id: string | number) {
+    push(`/process/${id}`);
+  }
+
   return (
     <>
-      <Head />
+      <Header />
 
       <main>
         <Container maxW="container.xl" mt={20}>
@@ -34,6 +41,7 @@ export default function Home() {
                 key: "email", value: "Email"
               }
             ]}
+            onClickRow={handleNavigateToProcess}
           >
 
           </Table>
