@@ -1,8 +1,10 @@
-import { Box, Button, Center, Flex, FormLabel, Input } from "@chakra-ui/react";
+import { Box, Center, Flex } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { BaseInput } from "@/components/BaseInput";
+import { BaseInput } from "@/components/inputs/BaseInput";
+import { BaseButton } from "@/components/buttons/BaseButton";
+import { FiFilter } from "react-icons/fi";
 
 const filterDataFormSchema = z.object({
   name: z.string().optional(),
@@ -50,15 +52,9 @@ export function MainFilters() {
       </Flex>
 
       <Center>
-        <Button
-          type="submit"
-          my={4}
-          _active={{
-            transform: "scale(0.95)"
-          }}
-        >
+        <BaseButton leftIcon={<FiFilter />} type="submit" >
           Filtrar
-        </Button>
+        </BaseButton>
       </Center>
     </Box >
 

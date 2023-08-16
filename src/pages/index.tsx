@@ -1,8 +1,11 @@
 import { Table } from "@/components/Table";
+import { BaseButton } from "@/components/buttons/BaseButton";
 import { MainFilters } from "@/components/filters/MainFilters";
 import { Header } from "@/layout/Header";
-import { Container } from "@chakra-ui/react";
+import { Button, Container, Flex } from "@chakra-ui/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { FiPlus } from "react-icons/fi";
 
 export default function Home() {
   const { push } = useRouter();
@@ -17,6 +20,11 @@ export default function Home() {
 
       <main>
         <Container maxW="container.xl" mt={20}>
+          <Link href="/process/new">
+            <BaseButton leftIcon={<FiPlus />}>
+              Novo
+            </BaseButton>
+          </Link>
 
           <MainFilters />
 

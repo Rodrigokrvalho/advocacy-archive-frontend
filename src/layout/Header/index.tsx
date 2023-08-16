@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Slider, Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, IconButton, Slider, Text, useDisclosure } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import { Menu } from "../Menu";
 
@@ -25,8 +25,9 @@ export function Header({}: Props) {
         w="full"
         zIndex={10}
       >
-        <Button
-          leftIcon={<FiMenu size={28} color="white" />}
+        <IconButton
+          aria-label="abrir menu"
+          icon={<FiMenu size={28} color="white" />}
           variant="ghost"
           onClick={onOpen}
           _hover={{}}

@@ -1,4 +1,5 @@
-import { BaseInput } from "@/components/BaseInput";
+import { BaseInput } from "@/components/inputs/BaseInput";
+import { ProcessForm } from "@/components/forms/ProcessForm";
 import { Header } from "@/layout/Header";
 import { Button, Center, Container, Flex, SimpleGrid } from "@chakra-ui/react";
 import { useRouter } from "next/router";
@@ -19,63 +20,19 @@ export default function Process({}: Props) {
 
       <main>
         <Container maxW="container.xl">
-          {!isEditing && (
-            <Flex justifyContent="flex-end" mt={20}>
+          <Flex justifyContent="flex-end" mt={20} h={5}>
+            {!isEditing && (
               <Button
                 leftIcon={<IoMdCreate />}
                 onClick={() => setIsEditing(true)}
               >
                 Editar
               </Button>
-            </Flex>
-          )}
+            )}
+          </Flex>
 
-          <SimpleGrid
-            columns={[1, 1, 2]}
-            spacing={4}
-            mt={10}
-          >
-            <BaseInput
-              label="Cliente"
-              disabled={!isEditing}
-            />
-            <BaseInput
-              label="Contra"
-              disabled={!isEditing}
-            />
-            <BaseInput
-              label="Nº Processo"
-              disabled={!isEditing}
-            />
-            <BaseInput
-              label="Sentença"
-              disabled={!isEditing}
-            />
-            <BaseInput
-              label="Nº Ordem"
-              disabled={!isEditing}
-            />
-            <BaseInput
-              label="Arquivo"
-              disabled={!isEditing}
-            />
-            <BaseInput
-              label="CPF/CNPJ"
-              disabled={!isEditing}
-            />
-            <BaseInput
-              label="Vara"
-              disabled={!isEditing}
-            />
-            <BaseInput
-              label="Ação"
-              disabled={!isEditing}
-            />
-            <BaseInput
-              label="Andamento"
-              disabled={!isEditing}
-            />
-          </SimpleGrid>
+          <ProcessForm isEditing={isEditing} />
+
           {isEditing && (
             <Center gap={20} mt={12}>
               <Button

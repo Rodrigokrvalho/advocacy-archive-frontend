@@ -1,5 +1,7 @@
+import { MenuLink } from "@/components/buttons/MenuLink";
 import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Heading, VStack } from "@chakra-ui/react";
 import Link from "next/link";
+import { IoMdHome, IoMdPerson } from "react-icons/io";
 
 interface Props {
   isOpen: boolean;
@@ -25,38 +27,19 @@ export function Menu({ btnRef, isOpen, onClose }: Props) {
 
         <DrawerBody>
           <VStack align="stretch">
+            <MenuLink
+              href="/"
+              leftIcon={<IoMdHome />}
+            >
+              Home
+            </MenuLink>
 
-            <Link href={'/'}>
-              <Button
-                variant="unstyled"
-                colorScheme="primary"
-                type="button"
-                w="full"
-                px={4}
-                textAlign="start"
-                _hover={{
-                  bg: 'primary.50',
-                }}
-              >
-                Home
-              </Button>
-            </Link>
-            <Link href={'/users'}>
-
-              <Button
-                variant="unstyled"
-                colorScheme="primary"
-                type="button"
-                w="full"
-                px={4}
-                textAlign="start"
-                _hover={{
-                  bg: 'primary.50',
-                }}
-              >
-                Usuários
-              </Button>
-            </Link>
+            <MenuLink
+              href="/"
+              leftIcon={<IoMdPerson />}
+            >
+              Usuários
+            </MenuLink>
           </VStack>
         </DrawerBody>
 

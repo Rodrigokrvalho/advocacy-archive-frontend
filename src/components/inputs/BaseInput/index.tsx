@@ -12,6 +12,7 @@ export function BaseInput({ label, ...rest }: Props) {
       <FormLabel htmlFor={rest.name}>{label}</FormLabel>
       <Input
         {...rest}
+        borderColor="primary.100"
         _disabled={{
           border: '0',
           bg: 'gray.50'
