@@ -21,7 +21,7 @@ const createProcessDataFormSchema = z.object({
   n_order: z.string().optional(),
   file: z.string().optional(),
   cpf: z.string().nonempty('campo obrigatório'),
-  type_process: z.nullable().optional(),
+  type_process: z.string().nullable().optional(),
   action: z.string().nonempty('campo obrigatório'),
   status: z.string().nonempty('campo obrigatório'),
 });
@@ -42,7 +42,6 @@ export function ProcessForm({
     formState: { errors },
     reset,
     setValue,
-    watch
   } = useForm<ProcessDataForm>({
     resolver: zodResolver(createProcessDataFormSchema)
   });
