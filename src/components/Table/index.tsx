@@ -13,7 +13,7 @@ interface Props {
   children?: ReactNode;
 }
 
-export function Table({ data, headers, children, onClickRow = () => {} }: Props) {
+export function Table({ data = [], headers, children, onClickRow = () => {} }: Props) {
 
   return (
     <TableContainer>
@@ -27,7 +27,7 @@ export function Table({ data, headers, children, onClickRow = () => {} }: Props)
         </Thead>
 
         <Tbody>
-          {data.map((data) => (
+          {data?.length && data.map((data) => (
             <Tr
               key={data.id}
               cursor="pointer"

@@ -57,28 +57,27 @@ export function AuthProvider({ children }: AuthProviderProps) {
     };
   }, []);
 
-  useEffect(() => {
-    const { 'nextauth.token': token } = parseCookies();
+  // useEffect(() => {
+  //   const { 'nextauth.token': token } = parseCookies();
 
-    // if (token) {
-    //   api.get('/me')
-    //     .then(response => {
-    //       const { email, permissions, roles } = response.data;
+  //   if (token) {
+  //     api.get('/me')
+  //       .then(response => {
+  //         const { email, permissions, roles } = response.data;
 
-    //       setUser({ email, permissions, roles });
-    //     })
-    //     .catch(() => {
-    //       signOut();
-    //     });
-    // }
-  }, []);
+  //         setUser({ email, permissions, roles });
+  //       })
+  //       .catch(() => {
+  //         signOut();
+  //       });
+  //   }
+  // }, []);
 
   async function signIn({ email, password }: SignInCredentials) {
     try {
       const response = await api.post('/auth/login', {
         email, password
       });
-      console.log({ response });
 
       const { access_token, permissions, roles } = response.data;
 
@@ -105,7 +104,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ signIn, signOut, isAuthenticated, user }}>
+    <AuthContext.Provider
+      value={{ signIn, signOut, isAuthenticated, user }}
+    >
       {children}
     </AuthContext.Provider>
   );

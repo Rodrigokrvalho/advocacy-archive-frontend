@@ -20,8 +20,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   const process = await apiClient.get('/v1/all')
     .then(response => response.data)
-    .catch(err => console.log(JSON.stringify(err.message, null, 2)));
-
+    .catch(() => {});
   return {
     props: { process: process || null }
   };
@@ -34,7 +33,7 @@ export default function Home({ process }: Props) {
   async function handleFilterProcess(data: FilterDataForm) {
     await api.get('/v1/all')
       .then(response => console.log(response))
-      .catch(err => console.log(err));
+      .catch(() => {});
   }
 
   function handleNavigateToProcess(id: string | number) {

@@ -27,7 +27,6 @@ export function MainFilters({ onSubmit }: Props) {
   });
 
   async function handleFilterData(data: FilterDataForm) {
-    console.log(data);
     onSubmit(data);
   }
 

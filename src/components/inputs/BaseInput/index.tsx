@@ -1,13 +1,13 @@
-import { Box, FormLabel, Input, InputProps } from "@chakra-ui/react";
+import { Box, FormLabel, Input, InputProps, Text } from "@chakra-ui/react";
 import { forwardRef } from "react";
 
 interface Props extends InputProps {
   label: string;
   disabled?: boolean;
-  ref?: any;
+  errorMessage?: string;
 }
 
-export const BaseInput = forwardRef<Props, any>(({ label, ...rest }, ref) => (
+export const BaseInput = forwardRef<Props, any>(({ label, errorMessage = '', ...rest }, ref) => (
   <Box w="full">
     <FormLabel htmlFor={rest.name}>{label}</FormLabel>
     <Input
@@ -19,5 +19,6 @@ export const BaseInput = forwardRef<Props, any>(({ label, ...rest }, ref) => (
         bg: 'gray.50'
       }}
     />
+    <Text h={2} color="red.500">{errorMessage}</Text>
   </Box>
 ));
