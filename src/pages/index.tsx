@@ -1,60 +1,74 @@
-import { Table } from "@/components/Table";
 import { BaseButton } from "@/components/buttons/BaseButton";
-import { MainFilters } from "@/components/filters/MainFilters";
-import { Header } from "@/layout/Header";
-import { Button, Container, Flex } from "@chakra-ui/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { FiPlus } from "react-icons/fi";
+import { BaseInput } from "@/components/inputs/BaseInput";
+import { AuthContext } from "@/contexts/AuthContext";
+import { Box, Container, Flex } from "@chakra-ui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-export default function Home() {
-  const { push } = useRouter();
+const loginFormSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .email('O campo deve ser um email válido'),
 
-  function handleNavigateToProcess(id: string | number) {
-    push(`/process/${id}`);
+  password: z
+    .string()
+    .min(5, 'A senha deve ter pelo menos 6 caracteres'),
+});
+
+export type LoginDataForm = z.infer<typeof loginFormSchema>;
+
+export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginDataForm>({
+    resolver: zodResolver(loginFormSchema)
+  });
+
+
+  const { signIn } = useContext(AuthContext);
+
+
+  async function handleLogin(data: LoginDataForm) {
+    signIn(data);
   }
 
   return (
     <>
-      <Header />
-
-      <main>
-        <Container maxW="container.xl" mt={20}>
-          <Link href="/process/new">
-            <BaseButton leftIcon={<FiPlus />}>
-              Novo
-            </BaseButton>
-          </Link>
-
-          <MainFilters />
-
-          <Table
-            data={[
-              { id: 1, name: "teste1", email: "test1@test.com" },
-              { id: 2, name: "teste2", email: "test2@test.com" },
-              { id: 3, name: "teste3", email: "test3@test.com" },
-              { id: 4, name: "teste4", email: "test4@test.com" },
-              { id: 5, name: "teste5", email: "test5@test.com" },
-              { id: 6, name: "teste6", email: "test6@test.com" },
-              { id: 7, name: "teste7", email: "test7@test.com" }
-            ]}
-            headers={[
-              {
-                key: "id", value: "ID"
-              },
-              {
-                key: "name", value: "Nome"
-              },
-              {
-                key: "email", value: "Email"
-              }
-            ]}
-            onClickRow={handleNavigateToProcess}
+      <Container maxW="container.xl">
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          height="90vh"
+          w={["100%", "100%", "40%"]}
+          flexDirection="column"
+          m="auto"
+          gap={5}
+        >
+          <Box
+            w="full"
+            as="form"
+            onSubmit={handleSubmit(handleLogin)}
           >
+            <BaseInput
+              label="email"
+              {...register('email')}
+            />
+            <BaseInput
+              label="senha"
+              {...register('password')}
+            />
+            <BaseButton type="submit">Entrar</BaseButton>
+          </Box>
 
-          </Table>
-        </Container>
-      </main>
+        </Flex>
+
+
+      </Container>
     </>
   );
 }

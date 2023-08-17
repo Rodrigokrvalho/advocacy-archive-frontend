@@ -29,6 +29,7 @@ export function Table({ data, headers, children, onClickRow = () => {} }: Props)
         <Tbody>
           {data.map((data) => (
             <Tr
+              key={data.id}
               cursor="pointer"
               onClick={() => onClickRow(data.id)}
               _hover={{

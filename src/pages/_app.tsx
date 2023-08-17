@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import { themeCustom } from '../styles/chakraCustomStyle';
 import GlobalStyles from '../styles/globalstyle';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -18,13 +19,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <GlobalStyles />
 
-      <ChakraProvider
-        theme={themeCustom}
-        resetCSS
-      >
-        <Component {...pageProps} />
+      <AuthProvider>
 
-      </ChakraProvider>
+        <ChakraProvider
+          theme={themeCustom}
+          resetCSS
+        >
+          <Component {...pageProps} />
+
+        </ChakraProvider>
+      </AuthProvider>
     </>
   );
 }

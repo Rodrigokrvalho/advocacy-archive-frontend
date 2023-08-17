@@ -6,15 +6,19 @@ import { BaseInput } from "@/components/inputs/BaseInput";
 import { BaseButton } from "@/components/buttons/BaseButton";
 import { FiFilter } from "react-icons/fi";
 
+interface Props {
+  onSubmit: (data: FilterDataForm) => void;
+}
+
 const filterDataFormSchema = z.object({
   name: z.string().optional(),
   action: z.string().optional(),
   status: z.string().optional(),
 });
 
-type FilterDataForm = z.infer<typeof filterDataFormSchema>;
+export type FilterDataForm = z.infer<typeof filterDataFormSchema>;
 
-export function MainFilters() {
+export function MainFilters({ onSubmit }: Props) {
   const {
     register,
     handleSubmit,
@@ -24,6 +28,7 @@ export function MainFilters() {
 
   async function handleFilterData(data: FilterDataForm) {
     console.log(data);
+    onSubmit(data);
   }
 
   return (

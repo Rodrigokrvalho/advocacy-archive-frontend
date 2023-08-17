@@ -28,14 +28,14 @@ export function Menu({ btnRef, isOpen, onClose }: Props) {
         <DrawerBody>
           <VStack align="stretch">
             <MenuLink
-              href="/"
+              href="/home"
               leftIcon={<IoMdHome />}
             >
               Home
             </MenuLink>
 
             <MenuLink
-              href="/"
+              href="/home"
               leftIcon={<IoMdPerson />}
             >
               Usuários
