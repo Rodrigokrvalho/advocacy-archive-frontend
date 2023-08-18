@@ -4,7 +4,7 @@ import { FilterDataForm, MainFilters } from "@/components/filters/MainFilters";
 import { Header } from "@/layout/Header";
 import { setupAPIClient } from "@/services/api";
 import { api } from "@/services/apiClient";
-import { Button, Container, Flex } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -18,9 +18,23 @@ interface Props {
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   const apiClient = setupAPIClient(ctx);
 
+  const isAuthenticated = await apiClient.get('/auth/me')
+    .then(response => response.status === 200)
+    .catch(() => false);
+
+  if (!isAuthenticated) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    };
+  }
+
   const process = await apiClient.get('/v1/all')
     .then(response => response.data)
-    .catch(() => {});
+    .catch(() => null);
+
   return {
     props: { process: process || null }
   };

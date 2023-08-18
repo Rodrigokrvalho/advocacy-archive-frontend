@@ -17,6 +17,19 @@ interface Props {
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   const apiClient = setupAPIClient(ctx);
 
+  const isAuthenticated = await apiClient.get('/auth/me')
+    .then(response => response.status === 200)
+    .catch(() => false);
+
+  if (!isAuthenticated) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    };
+  }
+
   const process = await apiClient.get(`/v1/find/${ctx.params?.id}`)
     .then(response => response.data)
     .catch(() => null);

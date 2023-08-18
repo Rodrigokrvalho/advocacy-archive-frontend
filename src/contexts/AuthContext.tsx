@@ -29,7 +29,6 @@ let authChannel: BroadcastChannel;
 
 export function signOut() {
   destroyCookie(undefined, 'nextauth.token');
-  destroyCookie(undefined, 'nextauth.refreshToken');
 
   authChannel.postMessage('signOut');
   Router.push('/');
