@@ -1,3 +1,5 @@
+'use client';
+
 import { Table } from "@/components/Table";
 import { BaseButton } from "@/components/buttons/BaseButton";
 import { FilterDataForm, MainFilters } from "@/components/filters/MainFilters";

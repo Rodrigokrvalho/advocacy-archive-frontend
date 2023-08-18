@@ -1,3 +1,4 @@
+'use client';
 import { BaseInput } from "@/components/inputs/BaseInput";
 import { ProcessDataForm, ProcessForm } from "@/components/forms/ProcessForm";
 import { Header } from "@/layout/Header";
