@@ -1,3 +1,5 @@
+'use client';
+
 import { Table } from "@/components/Table";
 import { BaseButton } from "@/components/buttons/BaseButton";
 import { FilterDataForm, MainFilters } from "@/components/filters/MainFilters";
@@ -33,10 +35,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   const process = await apiClient.get('/v1/all')
     .then(response => response.data)
-    .catch(() => {});
+    .catch(() => null);
 
   return {
-    props: { process }
+    props: { process: process || null }
   };
 
 };
