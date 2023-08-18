@@ -7,18 +7,20 @@ interface Props extends InputProps {
   errorMessage?: string;
 }
 
-export const BaseInput = forwardRef<Props, any>(({ label, errorMessage = '', ...rest }, ref) => (
-  <Box w="full">
-    <FormLabel htmlFor={rest.name}>{label}</FormLabel>
-    <Input
-      {...rest}
-      ref={ref}
-      borderColor="primary.100"
-      _disabled={{
-        border: '0',
-        bg: 'gray.50'
-      }}
-    />
-    <Text h={2} color="red.500">{errorMessage}</Text>
-  </Box>
-));
+export const BaseInput = forwardRef<Props, any>(function BaseInput({ label, errorMessage = '', ...rest }, ref) {
+  return (
+    <Box w="full">
+      <FormLabel htmlFor={rest.name}>{label}</FormLabel>
+      <Input
+        {...rest}
+        ref={ref}
+        borderColor="primary.100"
+        _disabled={{
+          border: '0',
+          bg: 'gray.50'
+        }}
+      />
+      <Text h={2} color="red.500">{errorMessage}</Text>
+    </Box>
+  );
+});
