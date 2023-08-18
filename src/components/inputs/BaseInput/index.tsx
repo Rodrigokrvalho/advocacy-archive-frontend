@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import { Box, FormLabel, Input, InputProps, Text } from "@chakra-ui/react";
 import { forwardRef } from "react";
 
@@ -8,7 +7,7 @@ interface Props extends InputProps {
   errorMessage?: string;
 }
 
-export const BaseInput = forwardRef<Props, any>(function Input({ label, errorMessage = '', ...rest }, ref) {
+export const BaseInput = forwardRef<Props, any>(function BaseInput({ label, errorMessage = '', ...rest }, ref) {
   return (
     <Box w="full">
       <FormLabel htmlFor={rest.name}>{label}</FormLabel>
