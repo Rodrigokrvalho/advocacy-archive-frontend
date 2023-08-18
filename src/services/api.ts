@@ -8,7 +8,7 @@ import { ParsedUrlQuery } from "querystring";
 let isRefreshing = false;
 let failedRequestQueue = [] as any;
 
-export function setupAPIClient(ctx: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>) {
+export function setupAPIClient(ctx?: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>) {
   let cookies = parseCookies(ctx);
 
   const api = axios.create({
