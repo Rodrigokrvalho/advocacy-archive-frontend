@@ -58,7 +58,7 @@ export function ProcessForm({
       setValue('action', formValues?.action || '');
       setValue('status', formValues?.status || '');
     }
-  }, [isEditing, initialValue, formValues]);
+  }, [isEditing, initialValue, formValues, setValue]);
 
 
   async function handleEditProcess(data: ProcessDataForm) {
