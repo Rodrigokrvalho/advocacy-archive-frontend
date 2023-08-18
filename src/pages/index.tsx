@@ -24,14 +24,11 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm<LoginDataForm>({
     resolver: zodResolver(loginFormSchema)
   });
 
-
   const { signIn } = useContext(AuthContext);
-
 
   async function handleLogin(data: LoginDataForm) {
     signIn(data);
@@ -64,10 +61,7 @@ export default function Login() {
             />
             <BaseButton type="submit">Entrar</BaseButton>
           </Box>
-
         </Flex>
-
-
       </Container>
     </>
   );

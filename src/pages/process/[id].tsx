@@ -1,8 +1,7 @@
-'use client';
-import { BaseInput } from "@/components/inputs/BaseInput";
+
 import { ProcessDataForm, ProcessForm } from "@/components/forms/ProcessForm";
 import { Header } from "@/layout/Header";
-import { Button, Center, Container, Flex, SimpleGrid } from "@chakra-ui/react";
+import { Center, Container, Flex } from "@chakra-ui/react";
 import { useState } from "react";
 import { IoMdSave, IoMdClose, IoMdCreate } from 'react-icons/io';
 import { GetServerSideProps } from "next";
@@ -33,7 +32,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   const process = await apiClient.get(`/v1/find/${ctx.params?.id}`)
     .then(response => response.data)
-    .catch(() => null);
+    .catch(() => {});
 
   return {
     props: { process: process }
