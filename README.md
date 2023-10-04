@@ -1,4 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -33,3 +32,18 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 # advocacy-archive-frontend
+
+## Tecnologys
+- React Hook Form
+- zod
+- ChakraUI
+- Nextjs
+- Typescript
+- Axios
+
+## Layout
+
+![image](https://github.com/Rodrigokrvalho/advocacy-archive-frontend/assets/54452396/f10d5fe6-17ee-4c4a-b390-73455ec40a8b)
+![image](https://github.com/Rodrigokrvalho/advocacy-archive-frontend/assets/54452396/f785acff-220b-4336-a4a3-e23e6e13a7f2)
+
+
